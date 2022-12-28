@@ -1,0 +1,55 @@
+@import '../../variables.css';
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 7rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+}
+.navlogo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 5rem;
+}
+.logo {
+  height: 4rem;
+  border-radius: 5px;
+}
+.logo-letter {
+  font-size: 1.8rem;
+  color: var(--clr-pri-dark);
+  margin-left: 1rem;
+}
+.navlinks {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 30%;
+}
+.navlinksitem {
+  text-decoration: none;
+  color: var(--clr-pri-dark);
+  font-size: 1.6rem;
+}
+.navlinksitemplus {
+  text-decoration: none;
+  color: white;
+  font-size: 1.6rem;
+  background-color: var(--clr-pri);
+  padding: 1rem 2.5rem;
+  border-radius: 2rem;
+}
+.navlinksitemplus {
+  text-decoration: none;
+  color: white;
+  font-size: 1.6rem;
+  background-color: var(--clr-pri);
+  padding: 1rem 2.5rem;
+  border-radius: 2rem;
+  transition: all 0.3s;
+}
+.navlinksitemplus:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.15);
+}

@@ -1,0 +1,41 @@
+@import '../../variables.css';
+footer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+.footerDetails {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+.footerCredits {
+  color: var(--clr-grey);
+}
+.footerCredits a {
+  text-decoration: none;
+  color: var(--clr-pri-dark);
+  opacity: 0.6;
+  font-size: 1.6rem;
+}
+.footerColumn {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.footerColumn h2 {
+  font-size: 2.3rem;
+  margin-bottom: 2.5rem;
+}
+.footerColumn ul {
+  font-size: 1.5rem;
+  list-style: none;
+  text-align: left;
+}
+.footerColumn ul li {
+  margin-bottom: 2rem;
+}
