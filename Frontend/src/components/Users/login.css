@@ -1,0 +1,74 @@
+.offscreen {
+  display: none;
+}
+.errmsg {
+  padding: 1rem 0;
+  font-size: 1.6rem;
+  background-color: lightpink;
+  color: red;
+  width: 50%;
+}
+.formLogin {
+  width: 50%;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.loginForm button {
+  font-size: 2rem;
+  padding: 1rem 0;
+  background-color: rgb(94, 2, 94);
+  border: none;
+  color: white;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+}
+.loginForm button:hover {
+  background-color: rgb(68, 2, 68);
+}
+.loginForm button span {
+  font-size: 2.5rem;
+}
+.loginForm input {
+  outline: none;
+  border: 1px solid rgba(94, 2, 94, 0.788);
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+}
+.loginForm label {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+.loginHeader {
+  font-size: 5rem;
+}
+.loginForm p {
+  font-size: 2rem;
+  color: white;
+}
+@media only screen and (max-width: 600px) {
+  .formLogin {
+    width: 100%;
+  }
+  .loginForm {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .formLogin {
+    width: 80%;
+  }
+  .loginForm {
+    width: 70%;
+  }
+}
