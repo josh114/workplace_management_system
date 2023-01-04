@@ -1,14 +1,11 @@
 import React from 'react';
-import durbanWorkplace from './durbanWorkplace.jpg';
+import Logo from './Logo';
 import './header.css';
 
 function Navbar() {
   return (
     <div className='navbar'>
-      <div className='navlogo'>
-        <img src={durbanWorkplace} alt='durban-logo' className='logo' />
-        <h2 className='logo-letter'>Durban WorkPlace</h2>
-      </div>
+      <Logo />
       <div className='navlinks'>
         <a href='#' className='navlinksitem'>
           Login

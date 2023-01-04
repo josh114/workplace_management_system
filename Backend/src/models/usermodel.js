@@ -14,6 +14,11 @@ const userSchema = new mongoose.Schema({
     lowercase: true,
     validate: [validator.isEmail, 'Please provide a correct email'],
   },
+  role: {
+    type: String,
+    enum: ['admin', 'supervisor', 'team-lead', 'user'],
+    default: 'user',
+  },
   password: {
     type: String,
     required: [true, 'A user  must set password'],
@@ -31,6 +36,12 @@ const userSchema = new mongoose.Schema({
     },
   },
   passwordChangedAt: Date,
+  country: String,
+  state: String,
+  address: String,
+  phone: {
+    type: String,
+  },
 });
 
 userSchema.pre('save', async function (next) {

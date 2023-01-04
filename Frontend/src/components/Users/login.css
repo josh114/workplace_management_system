@@ -1,3 +1,4 @@
+@import '../variables.css';
 .offscreen {
   display: none;
 }
@@ -71,4 +72,89 @@
   .loginForm {
     width: 70%;
   }
+}
+
+/* register page design code */
+.reg {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  height: 100vh;
+}
+.reg-sidebar {
+  width: 20%;
+  height: 100%;
+  background-image: linear-gradient(
+    to right bottom,
+    var(--clr-pri),
+    var(--clr-pri-dark)
+  );
+  text-align: left;
+  padding: 3rem;
+}
+.reg-sidebar Logo {
+  position: absolute;
+  left: 2rem;
+  top: 3rem;
+}
+.reg-sidebar_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  height: 100%;
+}
+.reg-sidebar_text h1 {
+  font-size: 2.5rem;
+}
+.reg-sidebar_text p {
+  font-size: 2rem;
+}
+.regbut {
+  background-color: var(--clr-pri) !important;
+  font-size: 1.35rem !important;
+}
+.reglog {
+  display: flex;
+  width: 20%;
+  margin-top: 3rem;
+}
+.reglog p {
+  font-size: 1.5rem;
+  margin-right: 2rem;
+}
+
+/* form design */
+.reg form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  align-items: center;
+  margin: 2rem auto;
+}
+.regformgroup {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.regformgroup label {
+  font-size: 1.5rem;
+}
+.regformgroup input {
+  font-size: 1.5rem;
+  padding: 0.75rem;
+  background-color: white;
+  outline: none;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  width: 70%;
+}
+.regformgroup input:focus {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+.regformtext h1 {
+  font-size: 3rem;
+  margin: 7rem 0 3rem 0;
 }

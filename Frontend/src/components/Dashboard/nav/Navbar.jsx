@@ -1,18 +1,37 @@
 import React from 'react';
 import durbanlogo from './durbanWorkplace.jpg';
+import Tooltip from '@mui/material/Tooltip';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import InboxIcon from '@mui/icons-material/Inbox';
+import { IconButton } from '@mui/material';
+const icons = [NotificationsNoneOutlinedIcon, InboxIcon];
 function Navbar() {
   return (
     <div className='db-navbar'>
       <div className='topItems'>
         <img src={durbanlogo} alt='durban logo' className='dblogo' />
-        <ion-icon name='notifications-outline'></ion-icon>
-        <ion-icon name='folder-open-outline'></ion-icon>
-        <ion-icon name='star-outline'></ion-icon>
+        <Tooltip
+          title={<h1 style={{ fontSize: 16 }}>Notification</h1>}
+          arrow
+          placement='right'
+        >
+          <IconButton>
+            <NotificationsNoneOutlinedIcon
+              sx={{ fontSize: 40, color: 'white' }}
+            />
+          </IconButton>
+        </Tooltip>
+        <Tooltip
+          title={<h1 style={{ fontSize: 16 }}>Inbox</h1>}
+          arrow
+          placement='right'
+        >
+          <IconButton>
+            <InboxIcon sx={{ fontSize: 40, color: 'white' }} />
+          </IconButton>
+        </Tooltip>
       </div>
-      <div className='bottomItems'>
-        <ion-icon name='person-add-outline'></ion-icon>
-        <ion-icon name='search-outline'></ion-icon>
-      </div>
+      <div className='bottomItems'></div>
     </div>
   );
 }

@@ -18,6 +18,10 @@
   font-size: 3rem;
   align-items: center;
 }
+.db-navbarIcon {
+  font-size: 4rem;
+}
+
 .db-navbar .topItems ion-icon {
   margin-bottom: 2rem;
 }
@@ -39,4 +43,72 @@
 }
 .ionIcons {
   margin-bottom: 2rem;
+}
+/* workspace create css */
+
+.wrk-card {
+  width: 50rem;
+  margin: 10rem auto;
+  height: 40rem;
+  border-radius: 2rem;
+  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+}
+.wrk-card form {
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+  width: 80%;
+}
+.wrk-card form h1 {
+  font-size: 2.5rem;
+  font-weight: 200;
+}
+.wrk-card form p {
+  font-size: 1.6rem;
+  font-weight: 200;
+}
+.letterCard {
+  width: 10rem;
+  height: 10rem;
+  background: linear-gradient(
+    to right bottom,
+    var(--clr-pri),
+    var(--clr-pri-dark)
+  );
+  color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0.8rem 1rem rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.letterCard h1 {
+  font-size: 5rem !important;
+  font-weight: 100;
+}
+.wrkformgroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0.5rem auto;
+}
+.wrkformgroup label {
+  font-size: 1.6rem;
+  text-align: left !important;
+  font-weight: 100;
+  margin-bottom: 0.5rem;
+}
+.wrkformgroup input {
+  font-size: 1.5rem;
+  width: 100%;
+  padding: 0.65rem 0.4rem;
+  border: 1px solid lightgray;
+}
+.wrkformgroup input:focus {
+  outline: none;
+  box-shadow: 0 0.7rem 1rem rgba(0, 0, 0, 0.15);
 }

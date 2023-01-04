@@ -13,11 +13,13 @@ function Login() {
 
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location?.state?.from?.pathname || '/';
+  const from = location.state?.from?.pathname || 'dashboard';
 
+  const storedJwt = localStorage.getItem('token');
   const [users, setUsers] = useState('');
   const [password, setPassword] = useState('');
   const [errmsg, setErrmsg] = useState('');
+  const [jwt, setJwt] = useState(storedJwt || null);
 
   useEffect(() => {
     setErrmsg('');
@@ -35,11 +37,15 @@ function Login() {
           headers: { 'content-type': 'application/json' },
         }
       );
-      console.log(JSON.stringify(response));
-      const token = response?.data?.token;
+      const responseData = response.data;
+      console.log('this is responseData', responseData);
+      const token = responseData.data.token;
+      console.log('this is the response token', token);
+      localStorage.setItem('token', token);
       setAuth({ users, password, token });
       setPassword('');
       setUsers('');
+      navigate(from, { replace: true });
     } catch (err) {
       console.log(err);
       if (!err.response) {

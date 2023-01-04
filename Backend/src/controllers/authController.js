@@ -14,8 +14,13 @@ exports.signup = async (req, res) => {
     let newUser = await User.create({
       name: req.body.name,
       email: req.body.email,
+      role: req.body.role,
       password: req.body.password,
       passwordConfirm: req.body.passwordConfirm,
+      address: req.body.address,
+      state: req.body.state,
+      country: req.body.country,
+      phone: req.body.phone
     });
     const token = signedToken(newUser._id);
     res.status(201).json({
@@ -35,6 +40,7 @@ exports.signup = async (req, res) => {
 
 exports.login = async (req, res, next) => {
   try {
+    console.log(req.body);
     const { email, password } = req.body;
     //implement chech for valid user and password
     if (!email || !password) {
@@ -44,19 +50,24 @@ exports.login = async (req, res, next) => {
     }
     //get email and password from  database
     const user = await User.findOne({ email }).select('+password');
+    console.log(user);
     if (!user || !(await user.correctPassword(password, user.password))) {
       return next(new AppError('Invalid email or password', 401));
     }
     //respond with the correct token for user acces
     const token = signedToken(user._id);
+    const roles = user.role;
     res.status(200).json({
       status: 'Success',
-      token,
+      data: {
+        roles,
+        token,
+      },
     });
   } catch (err) {
     res.status(400).json({
       status: 'failed',
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -90,4 +101,17 @@ exports.protect = async (req, res, next) => {
   }
   req.user = currentUser;
   next();
+};
+exports.restrictTo = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new AppError(
+          'This user does not have the permission to perform this operation',
+          403
+        )
+      );
+    }
+    next();
+  };
 };
