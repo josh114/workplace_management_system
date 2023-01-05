@@ -1,15 +1,63 @@
 @import '../variables.css';
+/* dashoard content */
+.dsh {
+  display: flex;
+  align-items: center;
+}
+.dsh-content {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-left: 3rem;
+}
+.dsh-content_header {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem;
+}
+.dsh-content_name h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: -1.5rem;
+}
+.dsh-content_name {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.dsh-content_name p {
+  font-size: 1.6rem;
+}
+.dsh-profile-com {
+  display: flex;
+  align-items: center;
+}
+.dsh-profile-com h1 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-left: 1rem;
+}
+.dsh-content_body-topitems {
+  display: flex;
+}
+.dshBut {
+  background: linear-gradient(
+    to right bottom,
+    var(--clr-pri),
+    var(--clr-pri-dark)
+  ) !important;
+  font-size: 1.4rem !important;
+}
 .db-navbar {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 8rem;
+  width: 30rem;
   height: 100vh;
   background-image: linear-gradient(to right bottom, #870461, #2d0120);
   color: white;
-  position: absolute;
-  left: 0;
 }
 
 .db-navbar .topItems {

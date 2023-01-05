@@ -40,7 +40,7 @@ exports.createWorkspace = async (req, res) => {
     let newWorkSpace = await Workspace.create({
       id: req.body.id,
       name: req.body.name,
-      board: req.body.board,
+      description: req.body.board,
     });
     res.status(200).json({
       status: 'Success',
@@ -55,3 +55,10 @@ exports.createWorkspace = async (req, res) => {
     });
   }
 };
+exports.updateWorkspace = async (req, res) => {
+  try {
+    let update = await Workspace.findByIdAndUpdate()
+  } catch (error) {
+    console.log(error)
+  }
+}

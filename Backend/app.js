@@ -6,13 +6,10 @@ const userRouter = require('./src/routes/userRouter');
 const cors = require('cors');
 app.use(express.json());
 app.use(express.static(__dirname + './public'));
+app.use('/images', express.static('images'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(
-  cors({
-    origin: ['http://localhost:3000', 'http://localhost:5000'],
-  })
-);
+app.use(cors());
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
