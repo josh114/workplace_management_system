@@ -1,0 +1,161 @@
+@import '../../variables.css';
+.crtask {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+}
+.crtask-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50rem;
+  padding: 3rem;
+  border-radius: 2rem;
+  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+.crtaskform {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.crtaskform-group {
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+  font-size: 1.7rem;
+  font-weight: 200;
+}
+.crtaskform-group_staff {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  justify-content: space-evenly;
+  font-size: 1.7rem;
+  font-weight: 200;
+  margin-bottom: 1rem;
+}
+.crtaskform-group_date {
+  display: flex;
+  width: 80%;
+  justify-content: space-evenly;
+  font-size: 1.7rem;
+  font-weight: 200;
+  margin-bottom: 1rem;
+}
+.crtaskform-group_con {
+  display: flex;
+  /* width: 80%; */
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 1.7rem;
+  font-weight: 200;
+  margin-bottom: 1rem;
+}
+.crtaskform-group_status {
+  display: flex;
+  width: 80%;
+  justify-content: space-evenly;
+  font-size: 1.7rem;
+  font-weight: 200;
+  margin-bottom: 1rem;
+}
+
+.crtaskform-group label {
+  margin-bottom: 0.5rem;
+}
+.crtaskform-group input {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border-radius: 3px;
+  border: 1px solid lightgrey;
+  outline: none;
+}
+.crtaskform-group input:focus {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  outline: none;
+}
+
+.closeBut {
+  position: absolute;
+  top: 3rem;
+  right: 3rem;
+}
+.button {
+  background: linear-gradient(
+    to right bottom,
+    var(--clr-pri),
+    var(--clr-pri-dark)
+  );
+  border: none;
+  padding: 1rem 2rem;
+  color: white;
+  box-shadow: 0 0.75rem 1.25rem rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  font-size: 1.5rem;
+  transition: all 0.3s;
+}
+.inactiveStaffList {
+  display: none;
+}
+.button:hover {
+  transform: scale(1.05);
+}
+.staff-icon {
+  position: relative;
+}
+.staffList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 3rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.25);
+  border-radius: 1rem;
+  width: 20rem;
+  position: absolute;
+  left: -10rem;
+  top: 4rem;
+}
+.close-staff {
+  position: absolute;
+  top: -2rem;
+  right: -10rem;
+}
+.addstaff-form {
+  width: 100%;
+}
+
+/* .staffItem {
+  width: 100%;
+} */
+/* .staffItem button {
+  border: none;
+  outline: none;
+  padding: 0 2rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  transition: all 0.25s;
+}
+.staffItem button:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.staffbutton-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.staffbutton-items p {
+  margin-left: 2rem;
+  font-size: 1.6rem;
+  font-weight: 200;
+} */

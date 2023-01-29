@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import Dashboard from './components/Dashboard/Dashboard';
+import Test from './components/Test';
 import Home from './components/Home/Home';
 import Login from './components/Users/Login';
 import Register from './components/Users/Register';
@@ -16,6 +17,7 @@ function App() {
         <Route path='login' element={<Login />} />
         <Route path='register' element={<Register />} />
         <Route path='createworkspace' element={<CreateWorkSpace />} />
+        <Route path='test' element={<Test />} />
       </Routes>
     </div>
   );
