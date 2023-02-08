@@ -19,6 +19,8 @@ const CreateStaff = () => {
           'Content-Type': 'application/json',
         }
       );
+      setName('');
+      setEmail('');
     } catch (error) {
       console.log(error);
     }

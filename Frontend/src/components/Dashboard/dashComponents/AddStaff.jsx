@@ -8,13 +8,13 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Tooltip from '@mui/material/Tooltip';
 import './dash.css';
 
-const AddStaff = () => {
+const AddStaff = (props) => {
   const getAllStaffPath = '/api/v0/staff';
   const axiosPrivate = useAxiosPrivate();
   const [active, setActive] = useState(false);
   const [staf, setStaf] = useState([]);
   const [staff, setStaff] = useState([]);
-  const [name, setName] = useState('');
+  // const [name, setName] = useState('');
 
   useEffect(() => {
     const getAllStaff = async () => {
@@ -22,8 +22,7 @@ const AddStaff = () => {
         const response = await axiosPrivate.get(getAllStaffPath);
         // setStf(response?.body);
         setStaf(response?.data?.response);
-        setName('Jennifer Mutua');
-        console.log(response?.data?.response);
+        // console.log(response?.data?.response);
       } catch (error) {
         console.log(error);
       }
@@ -33,15 +32,12 @@ const AddStaff = () => {
   const addStaff = (e) => {
     setActive(true);
   };
-  const submitStaff = () => {
-    return null;
-  };
   const addStaff2 = (e) => {
     setActive(false);
   };
+  // console.log(staff);
   return (
     <div className='crtaskform-group_staff'>
-      <p>Assign Staff</p>
       <div className='staff-icon'>
         <IconButton onClick={addStaff}>
           <AddCircleOutlineIcon sx={{ fontSize: 25 }} />
@@ -50,28 +46,37 @@ const AddStaff = () => {
           <IconButton className='close-staff' onClick={addStaff2}>
             <CloseIcon />
           </IconButton>
-          <form onSubmit={submitStaff} className='addstaff-form'>
-            <select name='staff' id='staff' multiple='multiple'>
-              {staf.map((el) => {
-                return (
-                  <option value={el._id} key={el._id}>
-                    {el.name}
-                  </option>
-                );
-              })}
-            </select>
-          </form>
-          {/* {staf.map((el) => {
+          {staf.map((el) => {
+            const [name, id] = [el.name.split(' ')[0], el._id];
             return (
-              <div className='staffItem' key={el._id}>
-                
+              <div key={el._id}>
+                <label htmlFor={name}>{el.name}</label>
+                <input
+                  type='checkbox'
+                  value={[id, name]}
+                  id={name}
+                  onClick={(e) => {
+                    let val = e.target.value.split(',');
+                    let value = val[0];
+                    const name = val[1];
+                    const id = document.getElementById(`${name}`);
+                    if (id.checked == true) {
+                      setStaff([...staff, value]);
+                    } else if (id.checked == false) {
+                      let index = staff.indexOf(value);
+                      if (index > -1) {
+                        staff.splice(index, 1);
+                      }
+                    }
+                  }}
+                />
               </div>
             );
-          })} */}
+          })}
         </div>
       </div>
 
-      <AvatarGroup max={2}>
+      {/* <AvatarGroup max={2}>
         {staff.map((el) => {
           return (
             <Tooltip
@@ -92,7 +97,7 @@ const AddStaff = () => {
             </Tooltip>
           );
         })}
-      </AvatarGroup>
+      </AvatarGroup> */}
     </div>
   );
 };

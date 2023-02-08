@@ -123,6 +123,7 @@
   position: absolute;
   left: -10rem;
   top: 4rem;
+  z-index: 100;
 }
 .close-staff {
   position: absolute;

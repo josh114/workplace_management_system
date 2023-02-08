@@ -6,8 +6,8 @@ const taskSchema = new mongoose.Schema({
   },
   person: [String],
   status: {
-    type: Boolean,
-    default: false,
+    type: String,
+    default: 'unassigned',
   },
   creator: {
     type: mongoose.Schema.Types.ObjectId,

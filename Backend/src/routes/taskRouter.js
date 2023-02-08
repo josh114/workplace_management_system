@@ -5,6 +5,6 @@ const authController = require('../controllers/authController');
 router
   .route('/')
   .get(authController.protect, taskController.getAllTasks)
-  .post(taskController.createTask);
+  .post(authController.protect, taskController.createTask);
 
 module.exports = router;

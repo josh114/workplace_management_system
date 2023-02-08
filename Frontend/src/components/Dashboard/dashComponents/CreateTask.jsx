@@ -12,6 +12,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivate';
 import './dash.css';
+import AddStaff from './AddStaff';
 const LOGIN_URL = '/api/v0/task';
 const getAllStaffPath = '/api/v0/staff';
 const CreateTask = () => {
@@ -22,24 +23,9 @@ const CreateTask = () => {
   const [date, setDate] = useState(null);
   const [staf, setStaf] = useState([]);
   const [status, setStatus] = useState('');
-  const [stf, setStf] = useState('');
+  const [stf, setStf] = useState([]);
   const [file, setFile] = useState('');
-  useEffect(() => {
-    const getAllStaff = async () => {
-      try {
-        const response = await axiosPrivate.get(getAllStaffPath);
-        // setStf(response?.body);
-        setStaf(response?.data?.response);
-        console.log(response?.data?.response);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getAllStaff();
-  }, []);
-  const addStaff = (e) => {
-    return <h1>this is add staff</h1>;
-  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -49,7 +35,6 @@ const CreateTask = () => {
           name,
           description,
           date,
-          staf,
           status,
         },
         {
@@ -57,6 +42,10 @@ const CreateTask = () => {
         }
       );
       console.log(response);
+      setName('');
+      setDescription('');
+      setDate(null);
+      setStatus('');
     } catch (err) {
       console.log(err);
     }
@@ -99,13 +88,14 @@ const CreateTask = () => {
                 label='Deadline'
                 value={date}
                 onChange={(newValue) => {
-                  setDate(newValue);
+                  setDate(newValue.$d);
                 }}
                 renderInput={(params) => <TextField {...params} />}
               />
             </LocalizationProvider>
           </div>
-          <div className='crtaskform-group_con'>
+
+          {/* <div className='crtaskform-group_con'>
             <p>Conversation</p>
             <Tooltip
               title={<h1 style={{ fontSize: 13 }}>Start Conversation</h1>}
@@ -116,9 +106,22 @@ const CreateTask = () => {
                 <AddCommentOutlinedIcon sx={{ fontSize: 25 }} />
               </IconButton>
             </Tooltip>
-          </div>
+          </div> */}
           <div className='crtaskform-group_status'>
             <p>Status</p>
+            <select
+              name='status'
+              id='status'
+              onChange={(e) => {
+                setStatus(e.target.value);
+              }}
+            >
+              <option value=''>select status</option>
+              <option value='done'>Done</option>
+              <option value='start'>Working on it</option>
+              <option value='unassigned'>Not Started</option>
+              <option value='null'>Abandoned</option>
+            </select>
           </div>
           <button type='submit' className='button'>
             Create Task

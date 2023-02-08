@@ -20,8 +20,9 @@ exports.signup = async (req, res) => {
       address: req.body.address,
       state: req.body.state,
       country: req.body.country,
-      phone: req.body.phone
+      phone: req.body.phone,
     });
+    console.log('new user created');
     const token = signedToken(newUser._id);
     res.status(201).json({
       status: 'Success',
@@ -40,7 +41,7 @@ exports.signup = async (req, res) => {
 
 exports.login = async (req, res, next) => {
   try {
-    console.log(req.body);
+    // console.log(req.body);
     const { email, password } = req.body;
     //implement chech for valid user and password
     if (!email || !password) {
@@ -50,7 +51,7 @@ exports.login = async (req, res, next) => {
     }
     //get email and password from  database
     const user = await User.findOne({ email }).select('+password');
-    console.log(user);
+    // console.log(user);
     if (!user || !(await user.correctPassword(password, user.password))) {
       return next(new AppError('Invalid email or password', 401));
     }
@@ -78,7 +79,7 @@ exports.protect = async (req, res, next) => {
     req.headers.authorization.startsWith('Bearer')
   ) {
     token = req.headers.authorization.split(' ')[1];
-    console.log(token);
+    // console.log(token);
   }
   if (!token) {
     return next(
