@@ -19,6 +19,8 @@ const TaskTable = () => {
   const axiosPrivate = useAxiosPrivate();
   const [task, setTask] = useState([]);
   const [headerName, setHeaderName] = useState('Task Name');
+  const [oldValue, setOldValue] = useState('');
+  const [newValue, setNewValue] = useState('');
   useEffect(() => {
     const getAllTask = async () => {
       try {
@@ -41,6 +43,16 @@ const TaskTable = () => {
     'Files',
   ];
   const handleChange = async (e) => {
+    try {
+      // console.log(e.target.value);
+      const name = e.target.value;
+      // const response = await axiosPrivate.patch(`${TASK_URL}/id`, {
+      //   name,
+      // });
+      // console.log(response?.data);
+    } catch (error) {
+      console.log(error?.message);
+    }
     return null;
   };
   return (
@@ -67,22 +79,56 @@ const TaskTable = () => {
               el.status,
             ];
             return (
-              <TableRow key={id}>
+              <TableRow key={id} id={id}>
                 <TableCell>
-                  <input type='text' value={name} onChange={handleChange} />
+                  <input
+                    type='text'
+                    defaultValue={name}
+                    onChange={handleChange}
+                    onBlur={async (e) => {
+                      console.log(e.target.value);
+                      const name = e.target.value;
+                      try {
+                        console.log(id);
+                        const response = await axiosPrivate.patch(
+                          `${TASK_URL}/${id}`,
+                          { name },
+                          { 'Content-Type': 'application/json' }
+                        );
+                        console.log(response);
+                      } catch (error) {
+                        console.log(error?.message);
+                      }
+                    }}
+                  />
                 </TableCell>
                 <TableCell>
                   <input
                     type='text'
-                    value={description}
+                    defaultValue={description}
                     onChange={handleChange}
+                    onBlur={async (e) => {
+                      console.log(e.target.value);
+                      const description = e.target.value;
+                      try {
+                        console.log(id);
+                        const response = await axiosPrivate.patch(
+                          `${TASK_URL}/${id}`,
+                          { description },
+                          { 'Content-Type': 'application/json' }
+                        );
+                        console.log(response);
+                      } catch (error) {
+                        console.log(error?.message);
+                      }
+                    }}
                   />
                 </TableCell>
                 <TableCell>
                   <h2>{date}</h2>
                 </TableCell>
                 <TableCell>
-                  <AddStaff id={id} />
+                  <AddStaff Id={id} />
                 </TableCell>
                 <TableCell>
                   <h2>{status}</h2>

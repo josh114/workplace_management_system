@@ -9,11 +9,13 @@ import Tooltip from '@mui/material/Tooltip';
 import './dash.css';
 
 const AddStaff = (props) => {
+  const TASK_URL = '/api/v0/task';
   const getAllStaffPath = '/api/v0/staff';
   const axiosPrivate = useAxiosPrivate();
   const [active, setActive] = useState(false);
   const [staf, setStaf] = useState([]);
   const [staff, setStaff] = useState([]);
+  const [person, setPerson] = useState([]);
   // const [name, setName] = useState('');
 
   useEffect(() => {
@@ -46,33 +48,59 @@ const AddStaff = (props) => {
           <IconButton className='close-staff' onClick={addStaff2}>
             <CloseIcon />
           </IconButton>
-          {staf.map((el) => {
-            const [name, id] = [el.name.split(' ')[0], el._id];
-            return (
-              <div key={el._id}>
-                <label htmlFor={name}>{el.name}</label>
-                <input
-                  type='checkbox'
-                  value={[id, name]}
-                  id={name}
-                  onClick={(e) => {
-                    let val = e.target.value.split(',');
-                    let value = val[0];
-                    const name = val[1];
-                    const id = document.getElementById(`${name}`);
-                    if (id.checked == true) {
-                      setStaff([...staff, value]);
-                    } else if (id.checked == false) {
-                      let index = staff.indexOf(value);
-                      if (index > -1) {
-                        staff.splice(index, 1);
+          <form
+            onSubmit={async (e) => {
+              e.preventDefault();
+              try {
+                const response = await axiosPrivate.patch(
+                  `${TASK_URL}/${props.Id}`,
+                  { person },
+                  { new: true }
+                );
+                console.log(response?.data);
+              } catch (error) {
+                console.log(error?.message);
+              }
+            }}
+          >
+            {staf.map((el) => {
+              const [name, id] = [el.name.split(' ')[0], el._id];
+              return (
+                <div key={el._id}>
+                  <label htmlFor={name}>{el.name}</label>
+                  <input
+                    type='checkbox'
+                    value={[id, name]}
+                    id={name}
+                    onClick={(e) => {
+                      let val = e.target.value.split(',');
+                      let value = val[0];
+                      const name = val[1];
+                      console.log('this is value', value);
+                      console.log('this is name', name);
+                      const id = document.getElementById(`${name}`);
+                      if (id.checked == true) {
+                        staff.push(value);
+                        // setStaff([...staff, value]);
+                        console.log('this is first if con', staff);
+                      } else if (id.checked == false) {
+                        let index = staff.indexOf(value);
+                        if (index > -1) {
+                          staff.splice(index, 1);
+                          console.log('this is sec if con', staff);
+                        }
                       }
-                    }
-                  }}
-                />
-              </div>
-            );
-          })}
+                      console.log(staff);
+                      // setPerson(staff);
+                      // console.log('this id staff', staff);
+                      // console.log('this is person', person);
+                    }}
+                  />
+                </div>
+              );
+            })}
+            <button type='submit'>Add</button>
+          </form>
         </div>
       </div>
 

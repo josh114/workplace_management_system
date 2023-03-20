@@ -8,7 +8,14 @@ const signedToken = (id) => {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
 };
-
+const tokenExpiresAt = (exp) => {
+  const date = Date.now();
+  const expires = exp * 1000;
+  if (date < expires) {
+    return false;
+  }
+  return true;
+};
 exports.signup = async (req, res) => {
   try {
     let newUser = await User.create({
@@ -88,6 +95,8 @@ exports.protect = async (req, res, next) => {
   }
   //verify token using jwt.verify
   const decode = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+  const expired = tokenExpiresAt(decode.exp);
+  console.log(decode, expired);
 
   //check if user still exist
   const currentUser = await User.findById(decode.id);

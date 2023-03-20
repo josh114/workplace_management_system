@@ -42,7 +42,7 @@ exports.createTask = async (req, res) => {
     });
   }
 };
-exports.getTask = async () => {
+exports.getTask = async (req, res) => {
   try {
     let id = req.params.id;
     const task = await Task.findById(id);
@@ -54,6 +54,26 @@ exports.getTask = async () => {
     res.status(404).json({
       status: 'fail',
       message: error?.message,
+    });
+  }
+};
+exports.updateTask = async (req, res) => {
+  try {
+    console.log('new task update request');
+    console.log(req.params, req.body);
+    const id = req.params.id;
+    const response = await Task.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+    console.log(response);
+    res.status(201).json({
+      status: 'Success',
+      response,
+    });
+  } catch (error) {
+    res.status(404).json({
+      status: 'fail',
+      message: error,
     });
   }
 };
